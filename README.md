@@ -1,62 +1,25 @@
-# E-commerce-sales
--- Create a new SQL database
-CREATE DATABASE ecommerce;
-USE ecommerce;
+# E-commerce Sales Analysis Project
 
--- Create tables for orders and customers
-CREATE TABLE orders (
-    order_id INT PRIMARY KEY,
-    customer_id INT,
-    order_date DATE,
-    product_id INT,
-    quantity INT,
-    total_price DECIMAL(10, 2)
-);
+This project analyzes sales data from a fictional e-commerce platform to gain insights into sales trends and customer behavior.
 
-CREATE TABLE customers (
-    customer_id INT PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    email VARCHAR(100),
-    city VARCHAR(100),
-    state VARCHAR(50),
-    country VARCHAR(50)
-);
--- Insert sample data into the orders table
-INSERT INTO orders VALUES
-(1, 101, '2023-01-01', 1, 2, 50.00),
-(2, 102, '2023-01-02', 2, 1, 30.00),
-(3, 103, '2023-01-03', 3, 3, 75.00),
-(4, 104, '2023-01-04', 1, 1, 25.00),
-(5, 105, '2023-01-05', 2, 2, 60.00);
+## Setup
 
--- Insert sample data into the customers table
-INSERT INTO customers VALUES
-(101, 'John', 'Doe', 'john@example.com', 'New York', 'NY', 'USA'),
-(102, 'Jane', 'Smith', 'jane@example.com', 'Los Angeles', 'CA', 'USA'),
-(103, 'David', 'Brown', 'david@example.com', 'Chicago', 'IL', 'USA'),
-(104, 'Emily', 'Johnson', 'emily@example.com', 'Houston', 'TX', 'USA'),
-(105, 'Michael', 'Williams', 'michael@example.com', 'Miami', 'FL', 'USA');
+1. Create a new SQL database called `ecommerce`.
+2. Create tables for `orders` and `customers` using the provided SQL scripts.
+3. Populate the tables with sample data using the provided SQL scripts.
 
--- Calculate total revenue
-SELECT SUM(total_price) AS total_revenue FROM orders;
+## Data Analysis
 
--- Calculate average order quantity
-SELECT AVG(quantity) AS avg_order_quantity FROM orders;
+- Total Revenue: Calculate the total revenue generated from all orders.
+- Average Order Quantity: Calculate the average quantity of products per order.
+- Top-Selling Products: Identify the top-selling products by total quantity sold.
+- Monthly Revenue: Analyze sales trends over time to understand monthly revenue fluctuations.
 
--- Identify top-selling products
-SELECT 
-    product_id,
-    SUM(quantity) AS total_quantity_sold
-FROM orders
-GROUP BY product_id
-ORDER BY total_quantity_sold DESC
-LIMIT 5;
+## Visualization
 
--- Analyze sales trends over time
-SELECT 
-    DATE_FORMAT(order_date, '%Y-%m') AS month,
-    SUM(total_price) AS monthly_revenue
-FROM orders
-GROUP BY month
-ORDER BY month;
+Export data to a visualization tool like Tableau or use SQL to generate basic visualizations.
+
+## Conclusion
+
+This project provides valuable insights into sales trends and customer behavior, which can inform business strategies and decision-making processes.
+
